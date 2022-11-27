@@ -1,0 +1,82 @@
+***************************************
+*  		   RIOT - OS	        *
+***************************************
+$ sudo su:
+$ ssh user@strasbourg.iot-lab.info
+$ git clone https://github.com/iot-lab/iot-lab.git
+$ source /opt/riot.source
+$ cd iot-lab
+$ make
+$ make setup-riot
+$ cd parts/RIOT/examples/gnrc_networking
+$ source /opt/riot.source
+$ BOARD=openmote-b make all
+
+***************************************
+*	NUEVA VENTANA EN EL TERMINAL    *
+***************************************
+$ sudo su
+$ scp user@strasbourg.iot-lab.info:/senslab/users/user/iot-lab/parts/RIOT/examples/gnrc_networking/bin/openmote--b/gnrc_networking.elf /home/user/Descargas/gnrc_networking.elf
+
+PASAMOS EL ARCHIVO CREADO A NUESTRA MAQUINA FISICA
+
+
+***************************************
+*       INGRESAMOS A IOT-LAB          *
+***************************************
+1. Creamos un nuevo experimento 
+2. Agregamos dos nodos Openmoteb (Strasbourg)
+3. Esperamos que se cree el proyecto
+4. Flasheamos los nodos con el archivo creado en RIOT
+5. Iniciamos el terminal
+
+
+*******************************
+* 	  MODULACIÓN FSK        *
+*******************************
+- Utilizamos los siguientes comandos
+> ifconfig 6 set phy_mode MR-FSK
+> ifconfig 6 set modulation_index 1
+> ifconfig 6 set modulation_order 2
+> ifconfig 6 set channel_spacing 200
+> ifconfig 6 set chan 10
+> ifconfig 6 set srate 50
+
+*******************************
+* 	  MODULACIÓN OFDM       *
+*******************************
+- Utilizamos los siguientes comandos
+> ifconfig 6 set phy_mode MR-OFDM
+> ifconfig 6 set option 1
+> ifconfig 6 set option 2
+> ifconfig 6 set option 3 (NO SE PUEDE)
+> ifconfig 6 set scheme 0
+> ifconfig 6 set scheme 1
+> ifconfig 6 set scheme 2
+> ifconfig 6 set scheme 3
+> ifconfig 6 set scheme 4
+> ifconfig 6 set scheme 5
+> ifconfig 6 set scheme 6
+> ifconfig 6 set scheme 7
+> ifconfig 6 set scheme 2
+> ifconfig 6 set chan 2  
+
+
+*******************************
+* 	  MODULACIÓN Q-PSK      *
+*******************************
+- Utilizamos los siguientes comandos
+> ifconfig 6 set phy_mode MR-O-QPSK
+> ifconfig 6 set chan
+> ifconfig 6 set chip_rate 100
+> ifconfig 6 set rate_mode 0
+> ifconfig 6 set rate_mode 1
+> ifconfig 6 set rate_mode 2
+> ifconfig 6 set rate_mode 3
+
+
+*******************************
+*    PROCESO DE HACER PING    *
+*******************************
+> ifconfig
+> ping6 IP del nodo
